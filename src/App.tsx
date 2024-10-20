@@ -17,7 +17,7 @@
 // import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 // import { advancedFaces } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { Background } from "./components/Background";
-// import "./App.css";
+import "./App.css";
 
 function App() {
   // const [publicID, setPublicID] = useState("");
