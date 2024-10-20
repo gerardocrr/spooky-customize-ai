@@ -17,6 +17,8 @@
 // import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 // import { advancedFaces } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { Background } from "./components/Background";
+import { Test } from "./components/Test";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -53,7 +55,12 @@ function App() {
         <button className="bg-blue-300">Mascara</button>
         <AdvancedImage cldImg={imageMask} width={"50%"} />
       </div> */}
-      <Background />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Test />}></Route>
+          <Route path="/images" element={<Background />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
