@@ -16,7 +16,7 @@
 // import { Position } from "@cloudinary/url-gen/qualifiers";
 // import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 // import { advancedFaces } from "@cloudinary/url-gen/qualifiers/focusOn";
-import { Background } from "./components/Background";
+import { Layout } from "./components/Layout";
 import "./App.css";
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
         <button className="bg-blue-300">Mascara</button>
         <AdvancedImage cldImg={imageMask} width={"50%"} />
       </div> */}
-      <Background />
+      <Layout />
     </>
   );
 }

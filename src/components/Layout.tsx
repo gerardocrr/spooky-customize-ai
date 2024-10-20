@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Background() {
+export function Layout() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverLeft, setHoverLeft] = useState(false);
   const [hoverRight, setHoverRight] = useState(false);
