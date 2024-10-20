@@ -1,8 +1,4 @@
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.backgrounds {
   background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease;
