@@ -27,7 +27,7 @@ export function Background() {
     <div
       className="App"
       style={{
-        backgroundImage: `url(public/backgrounds/${backgrounds[currentIndex]})`,
+        backgroundImage: `url(/backgrounds/${backgrounds[currentIndex]})`,
       }}
     >
       <div
