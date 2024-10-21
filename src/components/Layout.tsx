@@ -18,7 +18,13 @@ export function Layout({ children }: Props) {
     "smile.webp",
   ];
 
-  const titles = ["IT", "SCREAM", "SAW", "FRIDAY THE 13TH", "SMILE"];
+  const titles = [
+    "I T",
+    "S C R E A M",
+    "S A W",
+    "F R I D A Y THE 1 3 T H",
+    "S M I L E",
+  ];
 
   const handleRight = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % moviesImages.length);
