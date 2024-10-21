@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface UploadWidgetProps {
   setImage: (publicID: string) => void;
 }
 
 export function UploadWidget({ setImage }: UploadWidgetProps) {
+  const [isHoverButton, setIsHoverButton] = useState(false);
   const cloudinaryRef = useRef();
   const WidgetRef = useRef();
   useEffect(() => {
@@ -29,6 +30,18 @@ export function UploadWidget({ setImage }: UploadWidgetProps) {
     );
   }, []);
   return (
-    <button onClick={() => (WidgetRef.current as any).open()}>Upload</button>
+    <button
+      className={`bg-orange-600 p-2 rounded-lg text-white transition-all duration-300 ease-in-out ${
+        isHoverButton ? "scale-110" : "scale-100"
+      }`}
+      style={{
+        boxShadow: isHoverButton ? "0 0 50px rgba(255, 130, 0, 1)" : "none",
+      }}
+      onMouseEnter={() => setIsHoverButton(true)}
+      onMouseLeave={() => setIsHoverButton(false)}
+      onClick={() => (WidgetRef.current as any).open()}
+    >
+      🎃 Upload your image!
+    </button>
   );
 }
