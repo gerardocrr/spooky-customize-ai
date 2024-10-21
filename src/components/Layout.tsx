@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export function Layout() {
+interface Props {
+  children: ReactNode;
+}
+
+export function Layout({ children }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHoverLeft, setIsHoverLeft] = useState(false);
   const [isHoverRight, setIsHoverRight] = useState(false);
@@ -92,6 +96,7 @@ export function Layout() {
           >
             {titles[currentIndex]}
           </h1>
+          <div>{children}</div>
         </div>
 
         <div className="flex items-center">
