@@ -43,7 +43,7 @@ export function Layout() {
 
       <header className="relative z-10 bg-gradient-to-b from-black to-transparent text-white p-4">
         <div className="container mx-auto flex justify-between">
-          <h1 className="font-bold">🎃 Spooky Customiza AI</h1>
+          <h1 className="font-bold">🎃 Spooky Customize AI</h1>
           <a
             href="https://github.com/gerardocrr/spooky-customize-ai"
             target="_blank"
