@@ -96,7 +96,9 @@ export function Layout({ children }: Props) {
           >
             {titles[currentIndex]}
           </h1>
-          <div className="mt-5 z-10">{children}</div>
+          <div className="flex-grow flex justify-center items-center z-10">
+            {children}
+          </div>
         </div>
 
         <div className="flex items-center">

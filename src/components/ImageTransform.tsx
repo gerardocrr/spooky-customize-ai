@@ -4,8 +4,7 @@ import { UploadWidget } from "./UploadWidget";
 export function ImageTransform() {
   const [publicID, setPublicID] = useState("");
   return (
-    <div>
-      <h1>Image transform</h1>
+    <div className="text-white">
       <UploadWidget setImage={setPublicID} />
       <p>{publicID}</p>
     </div>
