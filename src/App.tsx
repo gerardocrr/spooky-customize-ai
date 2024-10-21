@@ -17,6 +17,7 @@
 // import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 // import { advancedFaces } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { Layout } from "./components/Layout";
+import { ImageTransform } from "./components/ImageTransform";
 import "./App.css";
 
 function App() {
@@ -53,7 +54,9 @@ function App() {
         <button className="bg-blue-300">Mascara</button>
         <AdvancedImage cldImg={imageMask} width={"50%"} />
       </div> */}
-      <Layout />
+      <Layout>
+        <ImageTransform />
+      </Layout>
     </>
   );
 }

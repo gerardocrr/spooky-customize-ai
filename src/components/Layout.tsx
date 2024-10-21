@@ -96,7 +96,7 @@ export function Layout({ children }: Props) {
           >
             {titles[currentIndex]}
           </h1>
-          <div>{children}</div>
+          <div className="mt-5">{children}</div>
         </div>
 
         <div className="flex items-center">
