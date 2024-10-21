@@ -2,8 +2,9 @@ import { useState } from "react";
 
 export function Layout() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoverLeft, setHoverLeft] = useState(false);
-  const [hoverRight, setHoverRight] = useState(false);
+  const [isHoverLeft, setIsHoverLeft] = useState(false);
+  const [isHoverRight, setIsHoverRight] = useState(false);
+  const [isHoverTitle, setIsHoverTitle] = useState(false);
 
   const moviesImages = [
     "it.webp",
@@ -34,12 +35,12 @@ export function Layout() {
     >
       <div
         className={`absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-black to-transparent transition-opacity duration-300 ${
-          hoverLeft ? "opacity-100" : "opacity-0"
+          isHoverLeft ? "opacity-100" : "opacity-0"
         }`}
       />
       <div
         className={`absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-black to-transparent transition-opacity duration-300 ${
-          hoverRight ? "opacity-100" : "opacity-0"
+          isHoverRight ? "opacity-100" : "opacity-0"
         }`}
       />
 
@@ -68,10 +69,10 @@ export function Layout() {
         <div className="flex items-center">
           <button
             className={`text-white text-9xl transition-transform duration-300 ease-in-out ${
-              hoverLeft ? "scale-150" : "scale-100"
+              isHoverLeft ? "scale-150" : "scale-100"
             }`}
-            onMouseEnter={() => setHoverLeft(true)}
-            onMouseLeave={() => setHoverLeft(false)}
+            onMouseEnter={() => setIsHoverLeft(true)}
+            onMouseLeave={() => setIsHoverLeft(false)}
             onClick={handleLeft}
           >
             ‹
@@ -79,7 +80,16 @@ export function Layout() {
         </div>
 
         <div className="flex-grow flex flex-col mx-4 items-center">
-          <h1 className="text-red-500 text-9xl ghastly-font">
+          <h1
+            className={`text-6xl font-extrabold text-red-600 transition-all duration-300 ease-in-out ghastly-font ${
+              isHoverTitle ? "scale-150" : "scale-100"
+            }`}
+            style={{
+              textShadow: isHoverTitle ? "0 0 50px rgba(255, 0, 0, 1)" : "none",
+            }}
+            onMouseEnter={() => setIsHoverTitle(true)}
+            onMouseLeave={() => setIsHoverTitle(false)}
+          >
             {titles[currentIndex]}
           </h1>
         </div>
@@ -87,10 +97,10 @@ export function Layout() {
         <div className="flex items-center">
           <button
             className={`text-white text-9xl transition-transform duration-300 ease-in-out ${
-              hoverRight ? "scale-150" : "scale-100"
+              isHoverRight ? "scale-150" : "scale-100"
             }`}
-            onMouseEnter={() => setHoverRight(true)}
-            onMouseLeave={() => setHoverRight(false)}
+            onMouseEnter={() => setIsHoverRight(true)}
+            onMouseLeave={() => setIsHoverRight(false)}
             onClick={handleRight}
           >
             ›
