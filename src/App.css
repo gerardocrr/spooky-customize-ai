@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "ghastly_panic";
+  src: url("/fonts/ghastly_panic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ghastly-font {
+  font-family: "ghastly_panic", sans-serif;
+}
+
 .backgrounds {
   background-size: cover;
   background-position: center;
