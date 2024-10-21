@@ -96,6 +96,7 @@ export function Layout({ children }: Props) {
             }`}
             style={{
               textShadow: isHoverTitle ? "0 0 50px rgba(255, 0, 0, 1)" : "none",
+              cursor: "default",
             }}
             onMouseEnter={() => setIsHoverTitle(true)}
             onMouseLeave={() => setIsHoverTitle(false)}
