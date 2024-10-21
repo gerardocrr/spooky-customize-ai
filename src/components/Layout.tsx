@@ -5,21 +5,23 @@ export function Layout() {
   const [hoverLeft, setHoverLeft] = useState(false);
   const [hoverRight, setHoverRight] = useState(false);
 
-  const backgrounds = [
-    "friday.webp",
+  const moviesImages = [
     "it.webp",
-    "saw.webp",
     "scream.webp",
+    "saw.webp",
+    "friday.webp",
     "smile.webp",
   ];
 
+  const titles = ["IT", "SCREAM", "SAW", "FRIDAY THE 13TH", "SMILE"];
+
   const handleRight = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % moviesImages.length);
   };
 
   const handleLeft = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? backgrounds.length - 1 : prevIndex - 1
+      prevIndex === 0 ? moviesImages.length - 1 : prevIndex - 1
     );
   };
 
@@ -27,7 +29,7 @@ export function Layout() {
     <div
       className="backgrounds relative min-h-screen flex flex-col"
       style={{
-        backgroundImage: `url(/backgrounds/${backgrounds[currentIndex]})`,
+        backgroundImage: `url(/backgrounds/${moviesImages[currentIndex]})`,
       }}
     >
       <div
@@ -77,7 +79,9 @@ export function Layout() {
         </div>
 
         <div className="flex-grow flex flex-col mx-4 items-center">
-          <h2 className="text-white">Content</h2>
+          <h2 className="text-red-500 text-9xl ghastly-font">
+            {titles[currentIndex]}
+          </h2>
         </div>
 
         <div className="flex items-center">
