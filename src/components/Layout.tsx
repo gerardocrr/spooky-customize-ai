@@ -62,27 +62,36 @@ export function Layout() {
         </div>
       </header>
 
-      <main className="flex-grow flex items-center justify-between p-4">
-        <button
-          className={`text-white text-9xl transition-transform duration-300 ease-in-out ${
-            hoverLeft ? "scale-150" : "scale-100"
-          }`}
-          onMouseEnter={() => setHoverLeft(true)}
-          onMouseLeave={() => setHoverLeft(false)}
-          onClick={handleLeft}
-        >
-          ‹
-        </button>
-        <button
-          className={`text-white text-9xl transition-transform duration-300 ease-in-out ${
-            hoverRight ? "scale-150" : "scale-100"
-          }`}
-          onMouseEnter={() => setHoverRight(true)}
-          onMouseLeave={() => setHoverRight(false)}
-          onClick={handleRight}
-        >
-          ›
-        </button>
+      <main className="flex-grow flex p-4">
+        <div className="flex items-center">
+          <button
+            className={`text-white text-9xl transition-transform duration-300 ease-in-out ${
+              hoverLeft ? "scale-150" : "scale-100"
+            }`}
+            onMouseEnter={() => setHoverLeft(true)}
+            onMouseLeave={() => setHoverLeft(false)}
+            onClick={handleLeft}
+          >
+            ‹
+          </button>
+        </div>
+
+        <div className="flex-grow flex flex-col mx-4 items-center">
+          <h2 className="text-white">Content</h2>
+        </div>
+
+        <div className="flex items-center">
+          <button
+            className={`text-white text-9xl transition-transform duration-300 ease-in-out ${
+              hoverRight ? "scale-150" : "scale-100"
+            }`}
+            onMouseEnter={() => setHoverRight(true)}
+            onMouseLeave={() => setHoverRight(false)}
+            onClick={handleRight}
+          >
+            ›
+          </button>
+        </div>
       </main>
 
       <footer className="relative z-10 bg-gradient-to-t from-black to-transparent text-white p-4">
