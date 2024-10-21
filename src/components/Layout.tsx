@@ -79,9 +79,9 @@ export function Layout() {
         </div>
 
         <div className="flex-grow flex flex-col mx-4 items-center">
-          <h2 className="text-red-500 text-9xl ghastly-font">
+          <h1 className="text-red-500 text-9xl ghastly-font">
             {titles[currentIndex]}
-          </h2>
+          </h1>
         </div>
 
         <div className="flex items-center">
