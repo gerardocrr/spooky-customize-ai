@@ -15,17 +15,17 @@ export function Layout({ children, currentIndex, setCurrentIndex }: Props) {
   const moviesImages = [
     "it.webp",
     "scream.webp",
+    "terrifier.webp",
     "saw.webp",
     "friday.webp",
-    "smile.webp",
   ];
 
   const titles = [
     "I T",
     "S C R E A M",
+    "T E R R I F I E R",
     "S A W",
     "F R I D A Y THE 1 3 T H",
-    "S M I L E",
   ];
 
   const handleRight = () => {
