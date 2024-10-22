@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Cloudinary, Transformation } from "@cloudinary/url-gen/index";
-import { AdvancedImage } from "@cloudinary/react";
 import { useParams } from "react-router-dom";
+import { generativeBackgroundReplace } from "@cloudinary/url-gen/actions/effect";
+import { Cloudinary, Transformation } from "@cloudinary/url-gen/index";
 import { source } from "@cloudinary/url-gen/actions/overlay";
 import { image } from "@cloudinary/url-gen/qualifiers/source";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { faces } from "@cloudinary/url-gen/qualifiers/focusOn";
+import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 
 interface Props {
@@ -20,8 +21,21 @@ export function ImageTransform({ currentIndex }: Props) {
     CloudinaryImage | undefined
   >(undefined);
   const params = useParams();
-
-  const emojis = ["🎈", "👻", "✌️", "🏒", "😊"];
+  const emojis = ["🎈", "👻", "🩸", "🔪", "🏒"];
+  const masks = [
+    "ecwqicsyuryrh88meice",
+    "nxgqkbxux2bn4lbvoiuf",
+    "fbdy1dbe30ms1ek2n3hw",
+    "fdmus1lybdzzm95mkx0e",
+    "s4wlthv4ay69fbuljlmd",
+  ];
+  const prompts = [
+    "dark hospital empty at night without lights with blood on the floor",
+    "dark bathroom empty at night without lights with blood on the floor",
+    "white wall with blood dripping down",
+    "hospital room and walls with blood dripping down",
+    "dark forest at night with no lights",
+  ];
 
   const cld = new Cloudinary({
     cloud: {
@@ -32,16 +46,17 @@ export function ImageTransform({ currentIndex }: Props) {
   const myImage = cld.image(params.id);
 
   const handleTransform = () => {
-    const image2 = cld
+    const newImage = cld
       .image(params.id)
+      .effect(generativeBackgroundReplace().prompt(prompts[currentIndex]))
       .overlay(
         source(
-          image("hackathon/masks:fdmus1lybdzzm95mkx0e").transformation(
-            new Transformation().resize(scale().width(1.5).regionRelative())
+          image(`hackathon/masks:${masks[currentIndex]}`).transformation(
+            new Transformation().resize(scale().width(1.9).regionRelative())
           )
         ).position(new Position().gravity(focusOn(faces())))
       );
-    setImageTransformed(image2);
+    setImageTransformed(newImage);
   };
 
   return (
@@ -73,7 +88,7 @@ export function ImageTransform({ currentIndex }: Props) {
           onMouseLeave={() => setIsHoverButton(false)}
           onClick={handleTransform}
         >
-          {emojis[currentIndex]} Transform!
+          {emojis[currentIndex]} Transform! {masks[currentIndex]}
         </button>
       </div>
     </div>
