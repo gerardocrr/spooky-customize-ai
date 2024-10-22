@@ -2,10 +2,11 @@ import { ReactNode, useState } from "react";
 
 interface Props {
   children: ReactNode;
+  currentIndex: number;
+  setCurrentIndex: (index: number | ((prevIndex: number) => number)) => void;
 }
 
-export function Layout({ children }: Props) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export function Layout({ children, currentIndex, setCurrentIndex }: Props) {
   const [isHoverLeft, setIsHoverLeft] = useState(false);
   const [isHoverRight, setIsHoverRight] = useState(false);
   const [isHoverTitle, setIsHoverTitle] = useState(false);

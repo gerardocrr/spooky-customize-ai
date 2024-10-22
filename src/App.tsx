@@ -1,11 +1,13 @@
 import { Layout } from "./components/Layout";
 import { ImageTransform } from "./components/ImageTransform";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <>
-      <Layout>
+      <Layout currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}>
         <ImageTransform />
       </Layout>
     </>
