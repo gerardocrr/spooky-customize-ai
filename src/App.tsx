@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ImageTransform } from "./components/ImageTransform";
 import { UploadWidget } from "./components/UploadWidget";
+import { Gallery } from "./components/Gallery";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
               path="/image/:id"
               element={<ImageTransform currentIndex={currentIndex} />}
             />
+            <Route path="/gallery" element={<Gallery />} />
           </Routes>
         </Layout>
       </BrowserRouter>
