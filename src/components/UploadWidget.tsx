@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-
-// interface UploadWidgetProps {
-//   setImage: (publicID: string) => void;
-// }
+import { useNavigate } from "react-router-dom";
 
 export function UploadWidget() {
   const [isHoverButton, setIsHoverButton] = useState(false);
   const cloudinaryRef = useRef();
   const WidgetRef = useRef();
+  const navigate = useNavigate();
   useEffect(() => {
     cloudinaryRef.current = (window as any).cloudinary;
     WidgetRef.current = (cloudinaryRef.current as any).createUploadWidget(
@@ -20,9 +18,7 @@ export function UploadWidget() {
       },
       function (error: any, result: any) {
         if (!error && result && result.event === "success") {
-          console.log(result);
-          console.log("Exitooooo!!!!!!");
-          //setImage(result.info.public_id);
+          navigate(`/image/${result.info.public_id}`);
         } else {
           console.log("Errorrr!!!!!!!");
         }
