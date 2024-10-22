@@ -14,7 +14,7 @@ function App() {
           <Routes>
             <Route index element={<Index />} />
             <Route
-              path="/image:id"
+              path="/image/:id"
               element={<ImageTransform currentIndex={currentIndex} />}
             />
           </Routes>
