@@ -1,9 +1,9 @@
-import { Layout } from "./components/Layout";
-import { ImageTransform } from "./components/ImageTransform";
-import "./App.css";
 import { useState } from "react";
+import { Layout } from "./components/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ImageTransform } from "./components/ImageTransform";
 import { UploadWidget } from "./components/UploadWidget";
+import "./App.css";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
