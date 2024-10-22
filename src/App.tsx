@@ -3,7 +3,7 @@ import { ImageTransform } from "./components/ImageTransform";
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Index } from "./pages/Index";
+import { UploadWidget } from "./components/UploadWidget";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Layout currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}>
           <Routes>
-            <Route index element={<Index />} />
+            <Route index element={<UploadWidget />} />
             <Route
               path="/image/:id"
               element={<ImageTransform currentIndex={currentIndex} />}
