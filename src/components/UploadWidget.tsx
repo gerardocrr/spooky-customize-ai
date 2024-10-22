@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-interface UploadWidgetProps {
-  setImage: (publicID: string) => void;
-}
+// interface UploadWidgetProps {
+//   setImage: (publicID: string) => void;
+// }
 
-export function UploadWidget({ setImage }: UploadWidgetProps) {
+export function UploadWidget() {
   const [isHoverButton, setIsHoverButton] = useState(false);
   const cloudinaryRef = useRef();
   const WidgetRef = useRef();
@@ -22,7 +22,7 @@ export function UploadWidget({ setImage }: UploadWidgetProps) {
         if (!error && result && result.event === "success") {
           console.log(result);
           console.log("Exitooooo!!!!!!");
-          setImage(result.info.public_id);
+          //setImage(result.info.public_id);
         } else {
           console.log("Errorrr!!!!!!!");
         }
