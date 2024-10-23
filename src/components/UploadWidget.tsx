@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export function UploadWidget() {
   const [isHoverButton, setIsHoverButton] = useState(false);
@@ -19,8 +20,7 @@ export function UploadWidget() {
       function (error: any, result: any) {
         if (!error && result && result.event === "success") {
           navigate(`/image/${result.info.public_id}`);
-        } else {
-          console.log("Errorrr!!!!!!!");
+          toast.success("Image loaded successfully.");
         }
       }
     );
