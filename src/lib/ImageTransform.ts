@@ -115,3 +115,16 @@ export const transformByRandomImages = (imageID: string, index: number) => {
       )
     );
 };
+
+export const downloadImage = async (url: string, name: string) => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  const blobUrl = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = blobUrl;
+  a.download = name + ".jpg";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(blobUrl);
+};
