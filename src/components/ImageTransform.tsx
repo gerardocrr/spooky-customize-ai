@@ -146,7 +146,7 @@ export function ImageTransform({ currentIndex }: Props) {
           onMouseLeave={() => setIsHoverButton(false)}
           onClick={handleTransform}
         >
-          {emojis[currentIndex]} Transform!
+          {emojis[currentIndex]} Transform your image!
         </button>
         {imageTransformed && (
           <button
