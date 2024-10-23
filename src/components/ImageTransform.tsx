@@ -12,6 +12,7 @@ interface Props {
 
 export function ImageTransform({ currentIndex }: Props) {
   const [isHoverButton, setIsHoverButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [imageTransformed, setImageTransformed] = useState<
     CloudinaryImage | undefined
   >(undefined);
@@ -32,7 +33,7 @@ export function ImageTransform({ currentIndex }: Props) {
       console.error("Image ID is undefined");
       return;
     }
-
+    setIsLoading(true);
     if (optionToTransform === "ai") {
       setImageTransformed(transformByAI(params.id, currentIndex));
     } else {
@@ -46,12 +47,21 @@ export function ImageTransform({ currentIndex }: Props) {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col justify-center items-center">
+      {isLoading && <div className="loader text-8xl"></div>}
+
+      <div
+        className={`flex flex-col justify-center items-center ${
+          isLoading ? "hidden" : ""
+        }`}
+      >
         {!imageTransformed && (
           <AdvancedImage
             className="rounded-lg mb-5"
             cldImg={myImage}
             width={"40%"}
+            onLoad={() => {
+              setIsLoading(false);
+            }}
           />
         )}
 
@@ -60,6 +70,9 @@ export function ImageTransform({ currentIndex }: Props) {
             className="rounded-lg mb-5"
             cldImg={imageTransformed}
             width={"40%"}
+            onLoad={() => {
+              setIsLoading(false);
+            }}
           />
         )}
         <div className="flex flex-col items-start mb-4">
@@ -99,7 +112,7 @@ export function ImageTransform({ currentIndex }: Props) {
           onMouseLeave={() => setIsHoverButton(false)}
           onClick={handleTransform}
         >
-          {emojis[currentIndex]} Transform! {optionToTransform}
+          {emojis[currentIndex]} Transform!
         </button>
       </div>
     </div>
