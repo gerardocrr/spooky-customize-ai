@@ -83,7 +83,6 @@ const randomBackground = (index: number) => {
 };
 
 export const transformByAI = (imageID: string, index: number) => {
-  console.log("ai");
   return cld
     .image(imageID)
     .effect(generativeBackgroundReplace().prompt(prompts[index]))
@@ -97,7 +96,6 @@ export const transformByAI = (imageID: string, index: number) => {
 };
 
 export const transformByRandomImages = (imageID: string, index: number) => {
-  console.log("images");
   return cld
     .image(imageID)
     .resize(scale().width(800))
