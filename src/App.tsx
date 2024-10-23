@@ -4,12 +4,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ImageTransform } from "./components/ImageTransform";
 import { UploadWidget } from "./components/UploadWidget";
 import { Gallery } from "./components/Gallery";
+import { Toaster } from "sonner";
 import "./App.css";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <>
+      <Toaster richColors position="top-right" />
       <BrowserRouter>
         <Layout currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}>
           <Routes>
