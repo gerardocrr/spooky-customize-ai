@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { AdvancedImage } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen/index";
+import { useNavigate } from "react-router-dom";
+
+interface ImageResource {
+  public_id: string;
+}
+
+interface ImageData {
+  resources: ImageResource[];
+}
 
 export function Gallery() {
-  interface ImageResource {
-    public_id: string;
-  }
-
-  interface ImageData {
-    resources: ImageResource[];
-  }
-
   const [images, setImages] = useState<ImageData | null>(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
@@ -30,13 +32,20 @@ export function Gallery() {
       cloudName: import.meta.env.VITE_PUBLIC_CLOUDINARY_CLOUD_NAME,
     },
   });
+
   return (
     <div className="grid grid-cols-4">
-      {images?.resources?.map((photo, idx) => {
-        const myImage = cld.image(photo.public_id);
+      {images?.resources?.map((img, idx) => {
+        const myImage = cld.image(img.public_id);
         return (
           <div className="p-5" key={idx}>
-            <AdvancedImage className="rounded-lg" cldImg={myImage} />
+            <AdvancedImage
+              className="rounded-lg hover:cursor-pointer"
+              cldImg={myImage}
+              onClick={() => {
+                navigate(`/image/${img.public_id}`);
+              }}
+            />
           </div>
         );
       })}
