@@ -7,6 +7,7 @@ import { Position } from "@cloudinary/url-gen/qualifiers/position";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { faces } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { extract } from "@cloudinary/url-gen/actions/effect";
+import { toast } from "sonner";
 
 const cld = new Cloudinary({
   cloud: {
@@ -127,4 +128,5 @@ export const downloadImage = async (url: string, name: string) => {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(blobUrl);
+  toast.info("Downloading image.");
 };
