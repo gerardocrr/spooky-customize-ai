@@ -77,21 +77,31 @@ export function ImageTransform({ currentIndex }: Props) {
         )}
         <div className="flex flex-col items-start mb-4">
           <div>
-            <label>
+            <label
+              className="text-white font-bold"
+              style={{
+                textShadow: "0 0 50px rgba(255, 0, 0, 1)",
+              }}
+            >
               <input
-                className="mx-2"
+                className="mx-2 accent-red-600"
                 type="radio"
                 value="ai"
                 checked={optionToTransform === "ai"}
                 onChange={handleOptionChange}
               />
-              Generate the background with Cloudinary AI
+              Generate background with Cloudinary AI
             </label>
           </div>
           <div>
-            <label>
+            <label
+              className="text-white font-bold"
+              style={{
+                textShadow: "0 0 50px rgba(255, 0, 0, 1)",
+              }}
+            >
               <input
-                className="mx-2"
+                className="mx-2 accent-red-600"
                 type="radio"
                 value="images"
                 checked={optionToTransform === "images"}
