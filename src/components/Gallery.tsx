@@ -14,7 +14,9 @@ interface ImageData {
 export function Gallery() {
   const [images, setImages] = useState<ImageData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
@@ -43,14 +45,24 @@ export function Gallery() {
         <div className="grid grid-cols-4">
           {images?.resources?.map((img, idx) => {
             const myImage = cld.image(img.public_id);
+            const isHovered = hoverIndex === idx;
             return (
               <div className="p-5" key={idx}>
                 <AdvancedImage
-                  className="rounded-lg hover:cursor-pointer"
+                  className={`rounded-lg ransition-all duration-300 ease-in-out hover:cursor-pointer ${
+                    isHovered ? "scale-110" : "scale-100"
+                  }`}
+                  style={{
+                    boxShadow: isHovered
+                      ? "0 0 10px rgba(255, 0, 0, 1)"
+                      : "none",
+                  }}
                   cldImg={myImage}
                   onClick={() => {
                     navigate(`/image/${img.public_id}`);
                   }}
+                  onMouseEnter={() => setHoverIndex(idx)}
+                  onMouseLeave={() => setHoverIndex(null)}
                 />
               </div>
             );
