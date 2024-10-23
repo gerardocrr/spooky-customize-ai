@@ -13,6 +13,7 @@ interface ImageData {
 
 export function Gallery() {
   const [images, setImages] = useState<ImageData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
@@ -23,6 +24,7 @@ export function Gallery() {
       );
       const data = await response.json();
       setImages(data);
+      setIsLoading(false);
     };
     getData();
   }, []);
@@ -34,21 +36,27 @@ export function Gallery() {
   });
 
   return (
-    <div className="grid grid-cols-4">
-      {images?.resources?.map((img, idx) => {
-        const myImage = cld.image(img.public_id);
-        return (
-          <div className="p-5" key={idx}>
-            <AdvancedImage
-              className="rounded-lg hover:cursor-pointer"
-              cldImg={myImage}
-              onClick={() => {
-                navigate(`/image/${img.public_id}`);
-              }}
-            />
-          </div>
-        );
-      })}
+    <div>
+      {isLoading ? (
+        <div className="loader text-8xl flex justify-center items-center"></div>
+      ) : (
+        <div className="grid grid-cols-4">
+          {images?.resources?.map((img, idx) => {
+            const myImage = cld.image(img.public_id);
+            return (
+              <div className="p-5" key={idx}>
+                <AdvancedImage
+                  className="rounded-lg hover:cursor-pointer"
+                  cldImg={myImage}
+                  onClick={() => {
+                    navigate(`/image/${img.public_id}`);
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
