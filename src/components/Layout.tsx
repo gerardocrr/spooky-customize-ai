@@ -134,7 +134,7 @@ export function Layout({ children, currentIndex, setCurrentIndex }: Props) {
       <footer className="relative z-10 bg-gradient-to-t from-black to-transparent text-white p-4">
         <div className="container mx-auto text-center">
           <p>
-            💻 Develop by{" "}
+            💻 Developed by{" "}
             <strong>
               <a href="https://github.com/gerardocrr" target="_blank">
                 Gerardo Cruz
