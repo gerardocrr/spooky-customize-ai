@@ -58,13 +58,16 @@ export function Layout({ children, currentIndex, setCurrentIndex }: Props) {
 
       <header className="relative z-10 bg-gradient-to-b from-black to-transparent text-white p-4">
         <div className="container mx-auto flex justify-between">
-          <Link to="/">
-            <h1 className="font-bold">🎃 Spooky Customize AI</h1>
-          </Link>
           <div className="flex">
-            <Link className="mx-10" to="/gallery">
+            <Link to="/">
+              <h1 className="font-bold">🎃 Spooky Customize AI</h1>
+            </Link>
+            <Link className="mx-20" to="/gallery">
               <h1 className="font-bold">🖼️ Gallery</h1>
             </Link>
+          </div>
+
+          <div>
             <a
               href="https://github.com/gerardocrr/spooky-customize-ai"
               target="_blank"
