@@ -28,8 +28,8 @@ export function UploadWidget() {
   return (
     <div className="flex flex-col justify-center items-center">
       <p className="text-white mb-5 bg-red-600 p-2 rounded-lg bg-opacity-20">
-        For a better experience use a horizontal image where your face is
-        clearly visible and the background is clear.
+        For a better experience use an image in which your face is clearly
+        visible and the background is empty.
       </p>
       <button
         className={`bg-orange-600 p-2 rounded-lg text-white transition-all duration-300 ease-in-out ${
