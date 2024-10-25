@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Cloudinary } from "@cloudinary/url-gen/index";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
+import { pad } from "@cloudinary/url-gen/actions/resize";
+import { color } from "@cloudinary/url-gen/qualifiers/background";
 import {
   downloadImage,
   transformByAI,
@@ -31,7 +33,10 @@ export function ImageTransform({ currentIndex }: Props) {
     },
   });
 
-  const myImage = cld.image(params.id);
+  const myImage = cld
+    .image(params.id)
+    .resize(pad().width(1280).height(720).background(color("#ffffff00")))
+    .format("webp");
 
   const handleTransform = () => {
     if (!params.id) {
