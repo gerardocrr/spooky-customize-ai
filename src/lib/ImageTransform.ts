@@ -7,6 +7,8 @@ import { Position } from "@cloudinary/url-gen/qualifiers/position";
 import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
 import { faces } from "@cloudinary/url-gen/qualifiers/focusOn";
 import { extract } from "@cloudinary/url-gen/actions/effect";
+import { pad } from "@cloudinary/url-gen/actions/resize";
+import { color } from "@cloudinary/url-gen/qualifiers/background";
 import { toast } from "sonner";
 
 const cld = new Cloudinary({
@@ -93,13 +95,14 @@ export const transformByAI = (imageID: string, index: number) => {
           new Transformation().resize(scale().width(1.9).regionRelative())
         )
       ).position(new Position().gravity(focusOn(faces())))
-    );
+    )
+    .resize(pad().width(960).height(540).background(color("#ffffff00")));
 };
 
 export const transformByRandomImages = (imageID: string, index: number) => {
   return cld
     .image(imageID)
-    .resize(scale().width(800))
+    .resize(pad().width(960).height(540).background(color("#ffffff00")))
     .effect(extract("person").detectMultiple())
     .overlay(
       source(
@@ -112,7 +115,7 @@ export const transformByRandomImages = (imageID: string, index: number) => {
       source(
         image(
           `hackathon/backgrounds:${randomBackground(index)}`
-        ).transformation(new Transformation().resize(scale().width(950)))
+        ).transformation(new Transformation().resize(scale().width(960)))
       )
     );
 };
