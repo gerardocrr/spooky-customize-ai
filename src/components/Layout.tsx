@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
+import { Banner } from "./Banner";
 
 interface Props {
   children: ReactNode;
@@ -45,6 +46,7 @@ export function Layout({ children, currentIndex, setCurrentIndex }: Props) {
         backgroundImage: `url(/backgrounds/${moviesImages[currentIndex]})`,
       }}
     >
+      <Banner />
       <div
         className={`absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-black to-transparent transition-opacity duration-300 ${
           isHoverLeft ? "opacity-100" : "opacity-0"
