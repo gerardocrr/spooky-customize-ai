@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export function Banner() {
@@ -62,7 +63,11 @@ export function Banner() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div></div>
-      <h1 className="inline-flex items-center">
+      <a
+        target="_blank"
+        href="https://cloudinary.com/blog/cloudinarys-hackathon-results-are-in#5th_place_spooky_customize_ai"
+        className="inline-flex items-center hover:underline"
+      >
         🏆 I won 5th place at
         <span className="mx-2">
           <CloudinaryLogo />
@@ -72,7 +77,7 @@ export function Banner() {
           <MidudevLogo />
         </span>
         Midudev hackathon!
-      </h1>
+      </a>
       <button
         className="mx-5"
         onClick={() => {
